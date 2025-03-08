@@ -30,6 +30,83 @@
 </style>
 </head>
 <body>
+    <script>
+            function handleLogin() {
+        // Get values from input fields
+        const username = document.getElementById("name").value;
+        const password = document.getElementById("password").value;
+
+        // Check if fields are empty
+        if (username === "" || password === "") {
+            alert("Name and password cannot be empty!");
+            return;
+        }
+
+        // Call the saveData function
+        saveData(username, password);
+
+        // Optionally redirect after login
+        // window.location.href = "dashboard.html";
+    }
+        // Save JSON data to LocalStorage with parameters
+        function saveData(name, category) {
+            const jsonData = {
+                name: name,
+                category: category
+            };
+            localStorage.setItem("data", JSON.stringify(jsonData));
+            alert("Data has been saved!");
+        }
+
+        // Load JSON data from LocalStorage
+        function loadData() {
+            const data = localStorage.getItem("data");
+            if (data) {
+                const parsedData = JSON.parse(data);
+                document.getElementById("name").textContent = parsedData.name;
+                document.getElementById("category").textContent = parsedData.category;
+                console.log("Loaded data:", parsedData);
+            } else {
+                alert("No data found!");
+            }
+        }
+
+        // Modify JSON data with new values and update LocalStorage
+        function modifyData(newName, newCategory) {
+            const data = localStorage.getItem("data");
+            if (data) {
+                let parsedData = JSON.parse(data);
+                parsedData.name = newName; // Modify the name
+                parsedData.category = newCategory; // Modify the category
+
+                localStorage.setItem("data", JSON.stringify(parsedData));
+                alert("Data has been modified!");
+            } else {
+                alert("No data to modify! Please save data first.");
+            }
+        }
+
+        // Clear JSON data from LocalStorage
+        function clearData() {
+            localStorage.removeItem("data");
+            document.getElementById("name").textContent = "";
+            document.getElementById("category").textContent = "";
+            alert("Data has been cleared!");
+        }
+
+        // Get name from LocalStorage
+        function getName() {
+            const data = localStorage.getItem("data");
+            return data ? JSON.parse(data).name : "No data found";
+        }
+
+        // Get category from LocalStorage
+        function getCategory() {
+            const data = localStorage.getItem("data");
+            return data ? JSON.parse(data).category : "No data found";
+        }
+    </script>
+
     <div class="container">
         <div class="login-container">
             <h2 class="text-center">Log in</h2>
@@ -37,8 +114,8 @@
 
             <form>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    <label for="name" class="form-label">Email</label>
+                    <input type="name" class="form-control" id="name" placeholder="Enter your email">
                 </div>
                 <div class="mb-2">
                     <label for="password" class="form-label">Password</label>
@@ -51,7 +128,9 @@
                     <input type="checkbox" class="form-check-input" id="keepSignedIn">
                     <label class="form-check-label" for="keepSignedIn">Keep me signed in</label>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Log in</button>
+                <!-- Log in button -->
+                <button type="button" class="btn btn-primary w-100" onclick="handleLogin()">Log in</button>
+
             </form>
         </div>
     </div>

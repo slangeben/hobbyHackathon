@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRYBE - Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Floating navbar */
+        .navbar-custom {
+            background-color: #e0e0e0;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .search-box {
+            background-color: #d6d6d6;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: #333;
+        }
+        .reward-btn {
+            background-color: #616161;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #616161;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            padding: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .sidebar a:hover {
+            background-color: #616161;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 260px;
+            margin-top: 80px;
+            padding: 20px;
+        }
+        .dashboard-card {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar {
+            background-color: #616161;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TRYBE</a>
+            <form class="d-flex mx-auto" role="search">
+                <input class="search-box form-control me-2" type="search" placeholder="Search TRYBE" aria-label="Search">
+            </form>
+            <div class="d-flex align-items-center">
+                <button class="btn reward-btn me-3">💎 Reward Points</button>
+                <img src="https://cdn2.thecatapi.com/images/MTY3ODIyMQ.jpg" class="profile-img" alt="User Avatar">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h5>Kevin</h5>
+        <p>Free | 💎 102 Points</p>
+        <hr>
+        <a href="#">Dashboard</a>
+        <a href="#">Modules</a>
+        <a href="#">Paths</a>
+        <hr>
+        <h6>MY ACHIEVEMENTS</h6>
+        <a href="#">📜 Certificates</a>
+ 
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Dashboard</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="dashboard-card text-center">
+                    <h3 style="color: red;">0.47%</h3>
+                    <p>creativity</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card text-center">
+                    <h3 style="color: blue;">0.00%</h3>
+                    <p>sports</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card text-center">
+                    <h3 style="color: green;">14.95%</h3>
+                    <p>technology</p>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">Currently Enrolled Path</h4>
+        <div class="dashboard-card">
+            <h5>🔓 Cracking into Hack the Box</h5>
+            <button class="btn btn-success">Continue</button>
+            <div class="progress mt-2">
+                <div class="progress-bar" role="progressbar" style="width: 14.29%;" aria-valuenow="14.29" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">Weekly Streak</h4>
+        <div class="dashboard-card">
+            <p>🔥 0 Streak Points</p>
+            <p>0 / 30 Streak pts</p>
+        </div>
+
+        <h4 class="mt-4">Refer a Friend</h4>
+        <div class="dashboard-card">
+            <p>Earn rewards by inviting your friends!</p>
+            <button class="btn btn-primary">Refer Now</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
