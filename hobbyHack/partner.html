@@ -22,9 +22,37 @@
         .chat-body { padding: 10px; height: 200px; overflow-y: auto; font-size: 14px; text-align: left; }
         .chat-footer { display: flex; padding: 10px; border-top: 1px solid #ddd; }
         .chat-footer input { flex-grow: 1; padding: 5px; }
+        .btn-go-back {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            color: white;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-go-back:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+    <button class="btn-go-back" onclick="goBack()">← Go Back</button>
+
+    <script>
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                alert("No previous page found.");
+            }
+        }
+    </script>
+    
 
     <div class="container partner-container">
         <h2 class="mb-4">Find Your Partner</h2>
