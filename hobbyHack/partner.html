@@ -6,94 +6,22 @@
     <title>Find Your Partner</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-        body {
-            background-color: #ffcc00;
-        }
-        .partner-container {
-            max-width: 900px;
-            margin: 40px auto;
-            text-align: center;
-        }
-        .partner-card {
-            display: flex;
-            align-items: center;
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        .partner-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-        .partner-info {
-            flex-grow: 1;
-            text-align: left;
-        }
-        .partner-name {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .partner-bio, .partner-availability {
-            font-size: 14px;
-            color: gray;
-            margin-bottom: 5px;
-        }
-        .partner-description {
-            font-size: 13px;
-            font-style: italic;
-            color: #555;
-        }
-        .pagination {
-            margin-top: 20px;
-        }
-        .filter-container {
-            margin-bottom: 20px;
-        }
+        body { background-color: #ffcc00; }
+        .partner-container { max-width: 900px; margin: 40px auto; text-align: center; }
+        .partner-card { display: flex; align-items: center; background: white; border-radius: 8px; padding: 15px; margin-bottom: 15px; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); }
+        .partner-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-right: 15px; }
+        .partner-info { flex-grow: 1; text-align: left; }
+        .partner-name { font-size: 18px; font-weight: bold; margin-bottom: 5px; }
+        .partner-bio, .partner-availability { font-size: 14px; color: gray; margin-bottom: 5px; }
+        .partner-description { font-size: 13px; font-style: italic; color: #555; }
+        .pagination { margin-top: 20px; display: flex; justify-content: center; gap: 10px; }
+        .filter-container { margin-bottom: 20px; display: flex; justify-content: center; gap: 10px; }
         /* Chat Modal */
-        .chat-modal {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 320px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-            display: none;
-            flex-direction: column;
-        }
-        .chat-header {
-            background: #007bff;
-            color: white;
-            padding: 10px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
-        .chat-body {
-            padding: 10px;
-            height: 200px;
-            overflow-y: auto;
-            font-size: 14px;
-            text-align: left;
-        }
-        .chat-footer {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-        }
-        .chat-footer input {
-            flex-grow: 1;
-            padding: 5px;
-        }
-        .chat-footer button {
-            margin-left: 5px;
-        }
+        .chat-modal { position: fixed; bottom: 10px; right: 10px; width: 320px; background: white; border-radius: 8px; box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); display: none; flex-direction: column; }
+        .chat-header { background: #007bff; color: white; padding: 10px; font-weight: bold; display: flex; justify-content: space-between; }
+        .chat-body { padding: 10px; height: 200px; overflow-y: auto; font-size: 14px; text-align: left; }
+        .chat-footer { display: flex; padding: 10px; border-top: 1px solid #ddd; }
+        .chat-footer input { flex-grow: 1; padding: 5px; }
     </style>
 </head>
 <body>
@@ -101,39 +29,37 @@
     <div class="container partner-container">
         <h2 class="mb-4">Find Your Partner</h2>
 
+        <!-- Filters -->
         <div class="filter-container">
-            <label for="sport-filter" class="me-2">Sport:</label>
-            <select id="sport-filter" class="form-select w-auto d-inline-block" onchange="filterPartners()">
-                <option value="all">All</option>
+            <select id="sport-filter" class="form-select w-auto" onchange="filterPartners()">
+                <option value="all">All Sports</option>
                 <option value="Basketball">Basketball</option>
                 <option value="Football">Football</option>
                 <option value="Tennis">Tennis</option>
                 <option value="Swimming">Swimming</option>
                 <option value="Running">Running</option>
             </select>
-
-            <label for="level-filter" class="ms-3 me-2">Level:</label>
-            <select id="level-filter" class="form-select w-auto d-inline-block" onchange="filterPartners()">
-                <option value="all">All</option>
+            <select id="level-filter" class="form-select w-auto" onchange="filterPartners()">
+                <option value="all">All Levels</option>
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advanced">Advanced</option>
             </select>
-
-            <label for="time-filter" class="ms-3 me-2">Available Time:</label>
-            <select id="time-filter" class="form-select w-auto d-inline-block" onchange="filterPartners()">
-                <option value="all">All</option>
+            <select id="time-filter" class="form-select w-auto" onchange="filterPartners()">
+                <option value="all">All Times</option>
                 <option value="Morning">Morning</option>
                 <option value="Afternoon">Afternoon</option>
                 <option value="Evening">Evening</option>
             </select>
         </div>
 
+        <!-- Partner List -->
         <div id="partner-list"></div>
 
+        <!-- Pagination -->
         <div class="pagination">
             <button class="btn btn-secondary" onclick="prevPage()">Previous</button>
-            <span id="page-info" class="mx-3"></span>
+            <span id="page-info"></span>
             <button class="btn btn-secondary" onclick="nextPage()">Next</button>
         </div>
     </div>
@@ -173,6 +99,9 @@
             const partnerList = document.getElementById("partner-list");
             partnerList.innerHTML = "";
 
+            const totalPages = Math.ceil(filteredPartners.length / itemsPerPage);
+            if (currentPage > totalPages) currentPage = totalPages;
+
             const start = (currentPage - 1) * itemsPerPage;
             const end = start + itemsPerPage;
             const currentPartners = filteredPartners.slice(start, end);
@@ -193,7 +122,21 @@
                 partnerList.innerHTML += partnerHTML;
             });
 
-            document.getElementById("page-info").textContent = `Page ${currentPage} of ${Math.ceil(filteredPartners.length / itemsPerPage)}`;
+            document.getElementById("page-info").textContent = `Page ${currentPage} of ${totalPages}`;
+        }
+
+        function nextPage() {
+            if (currentPage < Math.ceil(filteredPartners.length / itemsPerPage)) {
+                currentPage++;
+                renderPartners();
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderPartners();
+            }
         }
 
         function filterPartners() {
