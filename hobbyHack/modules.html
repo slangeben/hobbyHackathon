@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRYBE - Dashboard</title>
+    <title>TRYBE - Modules</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        /* Floating navbar */
+        /* Floating Navbar */
         .navbar-custom {
             background-color: #ffcc00; /* Yellow */
             padding: 10px 20px;
@@ -21,7 +21,7 @@
         .navbar-brand {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #df6437; /* New Orange */
+            color: #df6437; /* Orange */
         }
         .search-box {
             background-color: #fff3cd; /* Light Yellow */
@@ -31,7 +31,7 @@
             color: #df6437;
         }
         .reward-btn {
-            background-color: #df6437; /* New Orange */
+            background-color: #df6437; /* Orange */
             color: white;
             padding: 8px 15px;
             border: none;
@@ -64,33 +64,70 @@
             border-radius: 5px;
         }
         .sidebar a:hover {
-            background-color: #c4542e; /* Slightly darker Orange */
+            background-color: #c4542e; /* Darker Orange */
         }
 
-        /* Main content */
+        /* Main Content */
         .main-content {
             margin-left: 260px;
             margin-top: 80px;
             padding: 20px;
         }
-        .dashboard-card {
-            background-color: #fff3cd; /* Light Yellow */
+
+        /* Filters Section */
+        .filter-section {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .filter-btn {
+            background-color: #df6437;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .filter-btn:hover {
+            background-color: #c4542e;
+        }
+
+        /* Module Cards */
+        .module-card {
+            background-color: #fff3cd;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: 0.3s;
         }
-        .dashboard-card h3 {
-            color: #df6437; /* Orange Headers */
+        .module-card:hover {
+            transform: scale(1.02);
         }
-        .progress-bar {
+        .module-title {
+            font-weight: bold;
+            color: #df6437;
+        }
+        .module-meta {
+            font-size: 14px;
+            color: #555;
+        }
+        .unlock-btn {
             background-color: #df6437;
-        }
-        .btn-primary {
-            background-color: #df6437; /* Orange Buttons */
+            color: white;
             border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
         }
-        .btn-primary:hover {
-            background-color: #c4542e; /* Darker Orange */
+        .unlock-btn:hover {
+            background-color: #c4542e;
         }
     </style>
 </head>
@@ -101,7 +138,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">TRYBE</a>
             <form class="d-flex mx-auto" role="search">
-                <input class="search-box form-control me-2" type="search" placeholder="Search TRYBE" aria-label="Search">
+                <input class="search-box form-control me-2" type="search" placeholder="Search Modules" aria-label="Search">
             </form>
             <div class="d-flex align-items-center">
                 <button class="btn reward-btn me-3">💎 Reward Points</button>
@@ -110,53 +147,58 @@
         </div>
     </nav>
 
+    <!-- Sidebar -->
     <div class="sidebar">
         <h5>Kevin</h5>
         <p> 💎 102 Points</p>
         <hr>
         <a href="dashboard.html">Dashboard</a>
-        <a href="modules.html">Modules</a>  <!-- This now redirects to modules.html -->
+        <a href="#">Modules</a>
         <a href="#">Paths</a>
         <hr>
         <h6>MY ACHIEVEMENTS</h6>
         <a href="#">📜 Certificates</a>
     </div>
-    
 
     <!-- Main Content -->
     <div class="main-content">
-        <h2>Dashboard</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="dashboard-card text-center">
-                    <h3>0.47%</h3>
-                    <p>Creativity</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="dashboard-card text-center">
-                    <h3>0.00%</h3>
-                    <p>Sports</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="dashboard-card text-center">
-                    <h3>14.95%</h3>
-                    <p>Technology</p>
-                </div>
-            </div>
+        <h2>Modules</h2>
+
+        <!-- Filters -->
+        <div class="filter-section">
+            <button class="filter-btn">All</button>
+            <button class="filter-btn">Fundamental</button>
+            <button class="filter-btn">Easy</button>
+            <button class="filter-btn">Medium</button>
+            <button class="filter-btn">Hard</button>
         </div>
 
-        <h4 class="mt-4">Weekly Streak</h4>
-        <div class="dashboard-card">
-            <p>🔥 0 Streak Points</p>
-            <p>0 / 30 Streak pts</p>
-        </div>
-
-        <h4 class="mt-4">Refer a Friend</h4>
-        <div class="dashboard-card">
-            <p>Earn rewards by inviting your friends!</p>
-            <button class="btn btn-primary">Refer Now</button>
+        <!-- Modules List -->
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="module-card">
+                    <h4 class="module-title">Intro to Database</h4>
+                    <p class="module-meta"> Fundamental | 8 Sections</p>
+                    <p class="module-meta">💎 +10 | ⏳ 30 minutes</p>
+                    <button class="unlock-btn w-100">View</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="module-card">
+                    <h4 class="module-title">SQL Basics</h4>
+                    <p class="module-meta"> Easy | 12 Sections</p>
+                    <p class="module-meta">💎 +20 | ⏳ 2 hours</p>
+                    <button class="unlock-btn w-100">Unlock</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="module-card">
+                    <h4 class="module-title">Network Testing</h4>
+                    <p class="module-meta"> Medium | 15 Sections</p>
+                    <p class="module-meta">💎 +50 | ⏳ 5 hours</p>
+                    <button class="unlock-btn w-100">Unlock</button>
+                </div>
+            </div>
         </div>
     </div>
 
